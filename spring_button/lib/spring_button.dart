@@ -59,7 +59,8 @@ class SpringButton extends StatefulWidget {
   final GestureForcePressEndCallback onForcePressEnd;
 
   const SpringButton(this.springButtonType, this.uiChild,
-      {this.useCache: true,
+      {Key key,
+      this.useCache: true,
       this.onTapDown,
       this.onTapUp,
       this.onTap,
@@ -94,7 +95,8 @@ class SpringButton extends StatefulWidget {
       this.onPanCancel,
       this.onScaleStart,
       this.onScaleUpdate,
-      this.onScaleEnd});
+      this.onScaleEnd})
+      : super(key: key);
 
   @override
   SpringButtonState createState() => SpringButtonState(
