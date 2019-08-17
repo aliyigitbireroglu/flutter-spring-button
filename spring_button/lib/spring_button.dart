@@ -101,7 +101,6 @@ class SpringButton extends StatefulWidget {
   @override
   SpringButtonState createState() => SpringButtonState(
       springButtonType,
-      uiChild,
       useCache,
       onTapDown,
       onTapUp,
@@ -140,9 +139,10 @@ class SpringButton extends StatefulWidget {
       onScaleEnd);
 }
 
-class SpringButtonState extends State<SpringButton> with SingleTickerProviderStateMixin {
+class SpringButtonState extends State<SpringButton>
+    with SingleTickerProviderStateMixin {
   final SpringButtonType springButtonType;
-  Widget child;
+  Widget uiChild;
   final bool useCache;
 
   final GestureTapDownCallback onTapDown;
@@ -186,7 +186,6 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
 
   SpringButtonState(
       this.springButtonType,
-      this.child,
       this.useCache,
       this.onTapDown,
       this.onTapUp,
@@ -228,9 +227,16 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
   void initState() {
     super.initState();
 
-    animationController = AnimationController(vsync: this, lowerBound: 0.0, upperBound: 1.0, duration: const Duration(milliseconds: 1000));
+    if (!useCache) uiChild = wrapper();
+
+    animationController = AnimationController(
+        vsync: this,
+        lowerBound: 0.0,
+        upperBound: 1.0,
+        duration: const Duration(milliseconds: 1000));
     animationController.value = 1;
-    animation = Tween(begin: 0.75, end: 1.0).animate(CurvedAnimation(parent: animationController, curve: Curves.elasticOut));
+    animation = Tween(begin: 0.75, end: 1.0).animate(
+        CurvedAnimation(parent: animationController, curve: Curves.elasticOut));
   }
 
   @override
@@ -287,7 +293,7 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
         onScaleStart: onScaleStart,
         onScaleUpdate: onScaleUpdate,
         onScaleEnd: onScaleEnd,
-        child: child);
+        child: widget.uiChild);
   }
 
   @override
@@ -296,19 +302,23 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
       case SpringButtonType.OnlyScale:
         return AnimatedBuilder(
             animation: animation,
-            child: useCache ? wrapper() : null,
+            child: useCache ? uiChild : null,
             builder: (BuildContext context, Widget cachedChild) {
-              return Transform.scale(scale: animation.value, child: useCache ? cachedChild : wrapper());
+              return Transform.scale(
+                  scale: animation.value,
+                  child: useCache ? cachedChild : wrapper());
             });
         break;
       case SpringButtonType.WithOpacity:
         return AnimatedBuilder(
             animation: animation,
-            child: useCache ? wrapper() : null,
+            child: useCache ? uiChild : null,
             builder: (BuildContext context, Widget cachedChild) {
               return Opacity(
                   opacity: animation.value.clamp(0.5, 1.0),
-                  child: Transform.scale(scale: animation.value, child: useCache ? cachedChild : wrapper()));
+                  child: Transform.scale(
+                      scale: animation.value,
+                      child: useCache ? cachedChild : wrapper()));
             });
         break;
     }
