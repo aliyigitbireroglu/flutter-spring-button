@@ -227,7 +227,7 @@ class SpringButtonState extends State<SpringButton>
   void initState() {
     super.initState();
 
-    if (!useCache) uiChild = wrapper();
+    if (useCache) uiChild = wrapper();
 
     animationController = AnimationController(
         vsync: this,
