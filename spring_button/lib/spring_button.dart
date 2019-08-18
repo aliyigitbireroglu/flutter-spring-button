@@ -181,6 +181,7 @@ class SpringButtonState extends State<SpringButton>
   final GestureForcePressUpdateCallback onForcePressUpdate;
   final GestureForcePressEndCallback onForcePressEnd;
 
+  ///The [AnimationController] used to create the spring effect.
   AnimationController animationController;
   Animation<double> animation;
 
