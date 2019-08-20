@@ -5,8 +5,8 @@
 // other asset files. If you were granted this Intellectual Property for personal use, you are obligated to include this copyright                   /
 // text at all times.                                                                                                                                /
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 //@formatter:off
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -139,8 +139,7 @@ class SpringButton extends StatefulWidget {
       onScaleEnd);
 }
 
-class SpringButtonState extends State<SpringButton>
-    with SingleTickerProviderStateMixin {
+class SpringButtonState extends State<SpringButton> with SingleTickerProviderStateMixin {
   final SpringButtonType springButtonType;
   Widget uiChild;
   final bool useCache;
@@ -230,14 +229,9 @@ class SpringButtonState extends State<SpringButton>
 
     if (useCache) uiChild = wrapper();
 
-    animationController = AnimationController(
-        vsync: this,
-        lowerBound: 0.0,
-        upperBound: 1.0,
-        duration: const Duration(milliseconds: 1000));
+    animationController = AnimationController(vsync: this, lowerBound: 0.0, upperBound: 1.0, duration: const Duration(milliseconds: 1000));
     animationController.value = 1;
-    animation = Tween(begin: 0.75, end: 1.0).animate(
-        CurvedAnimation(parent: animationController, curve: Curves.elasticOut));
+    animation = Tween(begin: 0.75, end: 1.0).animate(CurvedAnimation(parent: animationController, curve: Curves.elasticOut));
   }
 
   @override
@@ -305,9 +299,7 @@ class SpringButtonState extends State<SpringButton>
             animation: animation,
             child: useCache ? uiChild : null,
             builder: (BuildContext context, Widget cachedChild) {
-              return Transform.scale(
-                  scale: animation.value,
-                  child: useCache ? cachedChild : wrapper());
+              return Transform.scale(scale: animation.value, child: useCache ? cachedChild : wrapper());
             });
         break;
       case SpringButtonType.WithOpacity:
@@ -317,9 +309,7 @@ class SpringButtonState extends State<SpringButton>
             builder: (BuildContext context, Widget cachedChild) {
               return Opacity(
                   opacity: animation.value.clamp(0.5, 1.0),
-                  child: Transform.scale(
-                      scale: animation.value,
-                      child: useCache ? cachedChild : wrapper()));
+                  child: Transform.scale(scale: animation.value, child: useCache ? cachedChild : wrapper()));
             });
         break;
     }

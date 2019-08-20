@@ -7,6 +7,15 @@ Example project for spring_button.
 
 A simple widget for having UI elements that respond to taps with a spring animation.
 
+[Media](#media) | [Description](#description) | [How-to-Use](#howtouse)
+
+<img src="https://img.shields.io/badge/Cosmos%20Software-Love%20Code-red"/>
+<br>
+
+
+[![Pub](https://img.shields.io/pub/v/spring_button?color=g)](https://pub.dev/packages/spring_button)
+[![License](https://img.shields.io/github/license/aliyigitbireroglu/flutter-spring-button?color=blue)](https://github.com/aliyigitbireroglu/flutter-spring-button/blob/master/LICENSE)
+
 1. [Media](#media) 
 2. [Description](#description) 
 3. [How-to-Use](#howtouse)
@@ -48,5 +57,3 @@ Cheers.
 <br><br>
 <img align="right" src="https://www.cosmossoftware.coffee/Common/Images/CosmosSoftwareIconTransparent.png" width="150" height="150"/>
 <br><br>
-
-

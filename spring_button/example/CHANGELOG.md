@@ -1,3 +1,9 @@
+## [1.0.5] - 19.08.2019
+
+* Improved code style.
+
+* Additions to the README.
+
 ## [1.0.4] - 18.08.2019
 
 * Improved documentation.
