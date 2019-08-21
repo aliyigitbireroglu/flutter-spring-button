@@ -10,10 +10,6 @@ A simple widget for having UI elements that respond to taps with a spring animat
 [![Pub](https://img.shields.io/pub/v/spring_button?color=g)](https://pub.dev/packages/spring_button)
 [![License](https://img.shields.io/github/license/aliyigitbireroglu/flutter-spring-button?color=blue)](https://github.com/aliyigitbireroglu/flutter-spring-button/blob/master/LICENSE)
 
-1. [Media](#media) 
-2. [Description](#description) 
-3. [How-to-Use](#howtouse)
-
 
 <a name="media"></a>
 ## Media

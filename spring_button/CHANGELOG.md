@@ -4,6 +4,8 @@
 
 * Additions to the README.
 
+* [1.0.5+1] A minor error in the README is fixed.
+
 ## [1.0.4] - 18.08.2019
 
 * Improved documentation.
