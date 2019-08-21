@@ -2,9 +2,11 @@
 
 * Improved code style.
 
-* Additions to the README.
+* Updated README.
 
 * [1.0.5+1] A minor error in the README is fixed.
+
+* [1.0.5+2] Updated README.
 
 ## [1.0.4] - 18.08.2019
 
