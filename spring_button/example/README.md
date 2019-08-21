@@ -9,9 +9,6 @@ Example project for spring_button.
 <a href="https://www.cosmossoftware.coffee">
    <img alt="Cosmos Software" src="https://img.shields.io/badge/Cosmos%20Software-Love%20Code-red" />
 </a>
-<a href="https://github.com/Solido/awesome-flutter">
-   <img alt="Awesome Flutter" src="https://img.shields.io/badge/Awesome-Flutter-blue.svg?longCache=true&style=flat-square" />
-</a>
 
 [![Pub](https://img.shields.io/pub/v/spring_button?color=g)](https://pub.dev/packages/spring_button)
 [![License](https://img.shields.io/github/license/aliyigitbireroglu/flutter-spring-button?color=blue)](https://github.com/aliyigitbireroglu/flutter-spring-button/blob/master/LICENSE)
@@ -31,7 +28,7 @@ Watch on **Youtube**:
 
 [v1.0.0](https://youtu.be/MMG1sfj43E0)
 <br><br>
-<img src="https://www.cosmossoftware.coffee/Common/Portfolio/GIFs/FlutterSpringButton.gif" height="450"/>
+<img src="https://www.cosmossoftware.coffee/Common/Portfolio/GIFs/FlutterSpringButton.gif" max-height="450"/>
 <br><br>
 
 
