@@ -1,3 +1,7 @@
+## [1.0.7] - 23.08.2019
+
+* Minor changes.
+
 ## [1.0.6] - 23.08.2019
 
 * A minor bug is fixed.

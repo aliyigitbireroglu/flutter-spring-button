@@ -539,5 +539,15 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
           },
         );
     }
+    return AnimatedBuilder(
+      animation: animation,
+      child: useCache ? uiChild : null,
+      builder: (BuildContext context, Widget cachedChild) {
+        return Transform.scale(
+          scale: animation.value,
+          child: useCache ? cachedChild : wrapper(),
+        );
+      },
+    );
   }
 }
