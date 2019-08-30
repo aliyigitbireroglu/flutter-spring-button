@@ -6,7 +6,6 @@
 // text at all times.                                                                                                                                /
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 enum SpringButtonType {
@@ -247,7 +246,15 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
       duration: const Duration(milliseconds: 1000),
     );
     animationController.value = 1;
-    animation = Tween(begin: 0.75, end: 1.0).animate(CurvedAnimation(parent: animationController, curve: Curves.elasticOut));
+    animation = Tween(
+      begin: 0.75,
+      end: 1.0,
+    ).animate(
+      CurvedAnimation(
+        parent: animationController,
+        curve: Curves.elasticOut,
+      ),
+    );
   }
 
   @override
@@ -285,23 +292,32 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
 
   void springDown() {
     if (_debugLevel > 0) print("springDown");
+
     isSpringDown = true;
     animationController.value = 0;
   }
 
   Future spring() async {
     if (_debugLevel > 0) print("spring-1");
+
     isSpringDown = false;
+
     if (hasMultiple) await Future.delayed(const Duration(milliseconds: 5));
+
     if (_debugLevel > 0) print("spring-2");
+
     if (!isSpringDown) animationController.forward();
   }
 
   Future springUp() async {
     if (_debugLevel > 0) print("springUp-1");
+
     isSpringDown = false;
+
     if (hasMultiple) await Future.delayed(const Duration(milliseconds: 500));
+
     if (_debugLevel > 0) print("springUp-2");
+
     if (!isSpringDown) animationController.value = 1;
   }
 
@@ -349,7 +365,7 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
               springUp();
               if (onSecondaryTapCancel != null) onSecondaryTapCancel();
             },
-      onDoubleTap: !hasDoubleTap //TODO: Check
+      onDoubleTap: !hasDoubleTap
           ? null
           : () {
               springDown();
@@ -512,33 +528,20 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
 
   @override
   Widget build(BuildContext context) {
-    switch (springButtonType) {
-      case SpringButtonType.OnlyScale:
-        return AnimatedBuilder(
-          animation: animation,
-          child: useCache ? uiChild : null,
-          builder: (BuildContext context, Widget cachedChild) {
-            return Transform.scale(
+    if (springButtonType == SpringButtonType.WithOpacity)
+      return AnimatedBuilder(
+        animation: animation,
+        child: useCache ? uiChild : null,
+        builder: (BuildContext context, Widget cachedChild) {
+          return Opacity(
+            opacity: animation.value.clamp(0.5, 1.0),
+            child: Transform.scale(
               scale: animation.value,
               child: useCache ? cachedChild : wrapper(),
-            );
-          },
-        );
-      case SpringButtonType.WithOpacity:
-        return AnimatedBuilder(
-          animation: animation,
-          child: useCache ? uiChild : null,
-          builder: (BuildContext context, Widget cachedChild) {
-            return Opacity(
-              opacity: animation.value.clamp(0.5, 1.0),
-              child: Transform.scale(
-                scale: animation.value,
-                child: useCache ? cachedChild : wrapper(),
-              ),
-            );
-          },
-        );
-    }
+            ),
+          );
+        },
+      );
     return AnimatedBuilder(
       animation: animation,
       child: useCache ? uiChild : null,

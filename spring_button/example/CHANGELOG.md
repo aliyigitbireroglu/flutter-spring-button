@@ -1,3 +1,9 @@
+## [1.0.8] - 30.08.2019
+
+* Minor changes.
+
+* Improved code style.
+
 ## [1.0.7] - 23.08.2019
 
 * Minor changes.

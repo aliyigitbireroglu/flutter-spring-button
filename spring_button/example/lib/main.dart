@@ -5,12 +5,12 @@
 // other asset files. If you were granted this Intellectual Property for personal use, you are obligated to include this copyright                   /
 // text at all times.                                                                                                                                /
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//@formatter:off
 
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:spring_button/spring_button.dart';
 
 void main() => runApp(MyApp());
@@ -51,6 +51,28 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  Widget row(String text, Color color) {
+    return Padding(
+      padding: EdgeInsets.all(12.5),
+      child: Container(
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: const BorderRadius.all(const Radius.circular(10.0)),
+        ),
+        child: Center(
+          child: Text(
+            text,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 12.5,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,14 +92,14 @@ class _MyHomePageState extends State<MyHomePage> {
             flex: 1,
             child: SpringButton(
               SpringButtonType.OnlyScale,
-              normalRow(
+              row(
                 "Increment",
                 Colors.deepPurpleAccent,
               ),
               onTapDown: (_) => incrementCounter(),
               onLongPress: () => timer = Timer.periodic(
                 const Duration(milliseconds: 100),
-                (Timer timer) => incrementCounter(),
+                (_) => incrementCounter(),
               ),
               onLongPressEnd: (_) {
                 timer?.cancel();
@@ -88,14 +110,14 @@ class _MyHomePageState extends State<MyHomePage> {
             flex: 1,
             child: SpringButton(
               SpringButtonType.OnlyScale,
-              normalRow(
+              row(
                 "Decrement",
                 Colors.redAccent,
               ),
               onTapDown: (_) => decrementCounter(),
               onLongPress: () => timer = Timer.periodic(
                 const Duration(milliseconds: 100),
-                (Timer timer) => decrementCounter(),
+                (_) => decrementCounter(),
               ),
               onLongPressEnd: (_) {
                 timer?.cancel();
@@ -106,26 +128,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-}
-
-Widget normalRow(String text, Color color) {
-  return Padding(
-    padding: EdgeInsets.all(12.5),
-    child: Container(
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: const BorderRadius.all(const Radius.circular(10.0)),
-      ),
-      child: Center(
-        child: Text(
-          text,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 12.5,
-          ),
-        ),
-      ),
-    ),
-  );
 }
