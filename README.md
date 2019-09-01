@@ -23,7 +23,7 @@ Watch on **Youtube**:
 
 [v1.0.0](https://youtu.be/MMG1sfj43E0)
 <br><br>
-<img src="https://www.cosmossoftware.coffee/Common/Portfolio/GIFs/FlutterSpringButton.gif" max-height="450"/>
+<img src="https://www.cosmossoftware.coffee/Common/Portfolio/GIFs/FlutterSpringButton.gif" height="450" max-height="450"/>
 <br><br>
 
 
@@ -38,13 +38,58 @@ It is more of an extension to the GestureDetector widget than an original new wi
 [comment]: <> (How-to-Use)
 <a name="howtouse"></a>
 ## How-to-Use
-Simply create a SpringButton widget with your parameters. It is very similar to a GestureDetector widget so it should be familiar. That's it!
+Simply create a SpringButton as shown in the example:
 
-Please see the example project and the documentation for understanding the parameters.
+```
+SpringButton(
+    SpringButtonType.OnlyScale, //springButtonType
+    uiChild(),                  //uiChild
+    {Key key,
+    useCache    : true,
+    onTapDown,
+    onTapUp,
+    onTap,
+    onTapCancel,
+    onSecondaryTapDown,
+    onSecondaryTapUp,
+    onSecondaryTapCancel,
+    onDoubleTap,
+    onLongPress,
+    onLongPressStart,
+    onLongPressMoveUpdate,
+    onLongPressUp,
+    onLongPressEnd,
+    onVerticalDragDown,
+    onVerticalDragStart,
+    onVerticalDragUpdate,
+    onVerticalDragEnd,
+    onVerticalDragCancel,
+    onHorizontalDragDown,
+    onHorizontalDragStart,
+    onHorizontalDragUpdate,
+    onHorizontalDragEnd,
+    onHorizontalDragCancel,
+    onForcePressStart,
+    onForcePressPeak,
+    onForcePressUpdate,
+    onForcePressEnd,
+    onPanDown,
+    onPanStart,
+    onPanUpdate,
+    onPanEnd,
+    onPanCancel,
+    onScaleStart,
+    onScaleUpdate,
+    onScaleEnd})
+    
+Widget uiChild() {}
+```
 
 **Further Explanations:**
 
 *For a complete set of descriptions for all parameters and methods, see the [documentation](https://pub.dev/documentation/spring_button/latest/).*
+
+* SpringButton, as you can see, is very similar to a GestureDetector widget so it should be familiar.
 
 
 [comment]: <> (Notes)
