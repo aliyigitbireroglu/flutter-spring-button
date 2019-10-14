@@ -23,6 +23,8 @@ class SpringButton extends StatefulWidget {
   ///Set this to true if your [uiChild] doesn't change at runtime.
   final bool useCache;
 
+  final Alignment alignment;
+
   final GestureTapDownCallback onTapDown;
   final GestureTapUpCallback onTapUp;
   final GestureTapCallback onTap;
@@ -64,6 +66,7 @@ class SpringButton extends StatefulWidget {
     this.uiChild, {
     Key key,
     this.useCache: true,
+    this.alignment: Alignment.center,
     this.onTapDown,
     this.onTapUp,
     this.onTap,
@@ -105,6 +108,7 @@ class SpringButton extends StatefulWidget {
   SpringButtonState createState() => SpringButtonState(
         springButtonType,
         useCache,
+        alignment,
         onTapDown,
         onTapUp,
         onTap,
@@ -147,6 +151,7 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
   final SpringButtonType springButtonType;
   Widget uiChild;
   final bool useCache;
+  final Alignment alignment;
 
   final GestureTapDownCallback onTapDown;
   final GestureTapUpCallback onTapUp;
@@ -196,6 +201,7 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
   SpringButtonState(
     this.springButtonType,
     this.useCache,
+    this.alignment,
     this.onTapDown,
     this.onTapUp,
     this.onTap,
@@ -537,6 +543,7 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
             opacity: animation.value.clamp(0.5, 1.0),
             child: Transform.scale(
               scale: animation.value,
+              alignment: alignment,
               child: useCache ? cachedChild : wrapper(),
             ),
           );
