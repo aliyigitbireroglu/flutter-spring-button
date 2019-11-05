@@ -51,6 +51,7 @@ SpringButton(
     uiChild(),                  //uiChild
     {Key key,
     useCache    : true,
+    alignment   : Alignment.center,
     onTapDown,
     onTapUp,
     onTap,

@@ -23,6 +23,7 @@ class SpringButton extends StatefulWidget {
   ///Set this to true if your [uiChild] doesn't change at runtime.
   final bool useCache;
 
+  ///Use this value to determine the alignment of the animation.
   final Alignment alignment;
 
   final GestureTapDownCallback onTapDown;
@@ -195,6 +196,8 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
 
   bool isSpringDown = false;
 
+  bool isEnabled = true;
+
   ///Use this value to determine the depth of debug logging that is actually only here for myself and the Swiss scientists.
   final int _debugLevel = 0;
 
@@ -296,6 +299,22 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
   bool get hasPan => onPanDown != null || onPanStart != null || onPanUpdate != null || onPanCancel != null;
   bool get hasScale => onScaleStart != null || onScaleUpdate != null || onScaleEnd != null;
 
+  void enable(){
+    if (!isEnabled) {
+      animationController.value = 1.0;
+      isSpringDown = false;
+      isEnabled=true;
+    }
+  }
+
+  void disable(){
+    if (isEnabled) {
+      animationController.value = 1.0;
+      isSpringDown = false;
+      isEnabled=false;
+    }
+  }
+
   void springDown() {
     if (_debugLevel > 0) print("springDown");
 
@@ -304,6 +323,8 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
   }
 
   Future spring() async {
+    if (!isEnabled) return;
+
     if (_debugLevel > 0) print("spring-1");
 
     isSpringDown = false;
@@ -316,6 +337,8 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
   }
 
   Future springUp() async {
+    if (!isEnabled) return;
+
     if (_debugLevel > 0) print("springUp-1");
 
     isSpringDown = false;
@@ -334,199 +357,199 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
           ? null
           : (_) {
               springDown();
-              if (onTapDown != null) onTapDown(_);
+              if (onTapDown != null && isEnabled) onTapDown(_);
             },
       onTapUp: !hasTap
           ? null
           : (_) {
               spring();
-              if (onTapUp != null) onTapUp(_);
+              if (onTapUp != null && isEnabled) onTapUp(_);
             },
       onTap: !hasTap
           ? null
           : () {
-              if (onTap != null) onTap();
+              if (onTap != null && isEnabled) onTap();
             },
       onTapCancel: !hasTap
           ? null
           : () {
               springUp();
-              if (onTapCancel != null) onTapCancel();
+              if (onTapCancel != null && isEnabled) onTapCancel();
             },
       onSecondaryTapDown: !hasSecondaryTap
           ? null
           : (_) {
               springDown();
-              if (onSecondaryTapDown != null) onSecondaryTapDown(_);
+              if (onSecondaryTapDown != null && isEnabled) onSecondaryTapDown(_);
             },
       onSecondaryTapUp: !hasSecondaryTap
           ? null
           : (_) {
               spring();
-              if (onSecondaryTapUp != null) onSecondaryTapUp(_);
+              if (onSecondaryTapUp != null && isEnabled) onSecondaryTapUp(_);
             },
       onSecondaryTapCancel: !hasSecondaryTap
           ? null
           : () {
               springUp();
-              if (onSecondaryTapCancel != null) onSecondaryTapCancel();
+              if (onSecondaryTapCancel != null && isEnabled) onSecondaryTapCancel();
             },
       onDoubleTap: !hasDoubleTap
           ? null
           : () {
               springDown();
               spring();
-              if (onDoubleTap != null) onDoubleTap();
+              if (onDoubleTap != null && isEnabled) onDoubleTap();
             },
       onLongPress: !hasLongPress
           ? null
           : () {
-              if (onLongPress != null) onLongPress();
+              if (onLongPress != null && isEnabled) onLongPress();
             },
       onLongPressStart: !hasLongPress
           ? null
           : (_) {
               springDown();
-              if (onLongPressStart != null) onLongPressStart(_);
+              if (onLongPressStart != null && isEnabled) onLongPressStart(_);
             },
       onLongPressMoveUpdate: !hasLongPress
           ? null
           : (_) {
-              if (onLongPressMoveUpdate != null) onLongPressMoveUpdate(_);
+              if (onLongPressMoveUpdate != null && isEnabled) onLongPressMoveUpdate(_);
             },
       onLongPressUp: !hasLongPress
           ? null
           : () {
               spring();
-              if (onLongPressUp != null) onLongPressUp();
+              if (onLongPressUp != null && isEnabled) onLongPressUp();
             },
       onLongPressEnd: !hasLongPress
           ? null
           : (_) {
-              if (onLongPressEnd != null) onLongPressEnd(_);
+              if (onLongPressEnd != null && isEnabled) onLongPressEnd(_);
             },
       onVerticalDragDown: !hasVerticalDrag
           ? null
           : (_) {
-              if (onVerticalDragDown != null) onVerticalDragDown(_);
+              if (onVerticalDragDown != null && isEnabled) onVerticalDragDown(_);
             },
       onVerticalDragStart: !hasVerticalDrag
           ? null
           : (_) {
               springDown();
-              if (onVerticalDragStart != null) onVerticalDragStart(_);
+              if (onVerticalDragStart != null && isEnabled) onVerticalDragStart(_);
             },
       onVerticalDragUpdate: !hasVerticalDrag
           ? null
           : (_) {
-              if (onVerticalDragUpdate != null) onVerticalDragUpdate(_);
+              if (onVerticalDragUpdate != null && isEnabled) onVerticalDragUpdate(_);
             },
       onVerticalDragEnd: !hasVerticalDrag
           ? null
           : (_) {
               spring();
-              if (onVerticalDragEnd != null) onVerticalDragEnd(_);
+              if (onVerticalDragEnd != null && isEnabled) onVerticalDragEnd(_);
             },
       onVerticalDragCancel: !hasVerticalDrag
           ? null
           : () {
               springUp();
-              if (onVerticalDragCancel != null) onVerticalDragCancel();
+              if (onVerticalDragCancel != null && isEnabled) onVerticalDragCancel();
             },
       onHorizontalDragDown: !hasHorizontalDrag
           ? null
           : (_) {
-              if (onHorizontalDragDown != null) onHorizontalDragDown(_);
+              if (onHorizontalDragDown != null && isEnabled) onHorizontalDragDown(_);
             },
       onHorizontalDragStart: !hasHorizontalDrag
           ? null
           : (_) {
               springDown();
-              if (onHorizontalDragStart != null) onHorizontalDragStart(_);
+              if (onHorizontalDragStart != null && isEnabled) onHorizontalDragStart(_);
             },
       onHorizontalDragUpdate: !hasHorizontalDrag
           ? null
           : (_) {
-              if (onHorizontalDragUpdate != null) onHorizontalDragUpdate(_);
+              if (onHorizontalDragUpdate != null && isEnabled) onHorizontalDragUpdate(_);
             },
       onHorizontalDragEnd: !hasHorizontalDrag
           ? null
           : (_) {
               spring();
-              if (onHorizontalDragEnd != null) onHorizontalDragEnd(_);
+              if (onHorizontalDragEnd != null && isEnabled) onHorizontalDragEnd(_);
             },
       onHorizontalDragCancel: !hasHorizontalDrag
           ? null
           : () {
               springUp();
-              if (onHorizontalDragCancel != null) onHorizontalDragCancel();
+              if (onHorizontalDragCancel != null && isEnabled) onHorizontalDragCancel();
             },
       onForcePressStart: !hasForcePress
           ? null
           : (_) {
               springDown();
-              if (onForcePressStart != null) onForcePressStart(_);
+              if (onForcePressStart != null && isEnabled) onForcePressStart(_);
             },
       onForcePressPeak: !hasForcePress
           ? null
           : (_) {
-              if (onForcePressPeak != null) onForcePressPeak(_);
+              if (onForcePressPeak != null && isEnabled) onForcePressPeak(_);
             },
       onForcePressUpdate: !hasForcePress
           ? null
           : (_) {
-              if (onForcePressUpdate != null) onForcePressUpdate(_);
+              if (onForcePressUpdate != null && isEnabled) onForcePressUpdate(_);
             },
       onForcePressEnd: !hasForcePress
           ? null
           : (_) {
               spring();
-              if (onForcePressEnd != null) onForcePressEnd(_);
+              if (onForcePressEnd != null && isEnabled) onForcePressEnd(_);
             },
       onPanDown: !hasPan
           ? null
           : (_) {
-              if (onPanDown != null) onPanDown(_);
+              if (onPanDown != null && isEnabled) onPanDown(_);
             },
       onPanStart: !hasPan
           ? null
           : (_) {
               springDown();
-              if (onPanStart != null) onPanStart(_);
+              if (onPanStart != null && isEnabled) onPanStart(_);
             },
       onPanUpdate: !hasPan
           ? null
           : (_) {
-              if (onPanUpdate != null) onPanUpdate(_);
+              if (onPanUpdate != null && isEnabled) onPanUpdate(_);
             },
       onPanEnd: !hasPan
           ? null
           : (_) {
               spring();
-              if (onPanEnd != null) onPanEnd(_);
+              if (onPanEnd != null && isEnabled) onPanEnd(_);
             },
       onPanCancel: !hasPan
           ? null
           : () {
               springUp();
-              if (onPanCancel != null) onPanCancel();
+              if (onPanCancel != null && isEnabled) onPanCancel();
             },
       onScaleStart: !hasScale
           ? null
           : (_) {
               springDown();
-              if (onScaleStart != null) onScaleStart(_);
+              if (onScaleStart != null && isEnabled) onScaleStart(_);
             },
       onScaleUpdate: !hasScale
           ? null
           : (_) {
-              if (onScaleUpdate != null) onScaleUpdate(_);
+              if (onScaleUpdate != null && isEnabled) onScaleUpdate(_);
             },
       onScaleEnd: !hasScale
           ? null
           : (_) {
               spring();
-              if (onScaleEnd != null) onScaleEnd(_);
+              if (onScaleEnd != null && isEnabled) onScaleEnd(_);
             },
       child: widget.uiChild,
     );

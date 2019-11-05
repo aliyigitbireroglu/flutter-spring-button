@@ -1,3 +1,9 @@
+## [1.0.10] - 05.11.2019
+
+* Minor changes.
+
+* Updated README.
+
 ## [1.0.9] - 14.10.2019
 
 * Minor changes.
