@@ -316,6 +316,8 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
   }
 
   void springDown() {
+    if (!isEnabled) return;
+
     if (_debugLevel > 0) print("springDown");
 
     isSpringDown = true;
