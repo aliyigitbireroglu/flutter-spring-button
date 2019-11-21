@@ -281,37 +281,26 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
   bool get hasTap => onTapDown != null || onTapUp != null || onTap != null || onTapCancel != null;
   bool get hasSecondaryTap => onSecondaryTapDown != null || onSecondaryTapUp != null || onSecondaryTapCancel != null;
   bool get hasDoubleTap => onDoubleTap != null;
-  bool get hasLongPress =>
-      onLongPress != null || onLongPressStart != null || onLongPressMoveUpdate != null || onLongPressUp != null || onLongPressEnd != null;
-  bool get hasVerticalDrag =>
-      onVerticalDragDown != null ||
-      onVerticalDragStart != null ||
-      onVerticalDragUpdate != null ||
-      onVerticalDragEnd != null ||
-      onVerticalDragCancel != null;
-  bool get hasHorizontalDrag =>
-      onHorizontalDragDown != null ||
-      onHorizontalDragStart != null ||
-      onHorizontalDragUpdate != null ||
-      onHorizontalDragEnd != null ||
-      onHorizontalDragCancel != null;
+  bool get hasLongPress => onLongPress != null || onLongPressStart != null || onLongPressMoveUpdate != null || onLongPressUp != null || onLongPressEnd != null;
+  bool get hasVerticalDrag => onVerticalDragDown != null || onVerticalDragStart != null || onVerticalDragUpdate != null || onVerticalDragEnd != null || onVerticalDragCancel != null;
+  bool get hasHorizontalDrag => onHorizontalDragDown != null || onHorizontalDragStart != null || onHorizontalDragUpdate != null || onHorizontalDragEnd != null || onHorizontalDragCancel != null;
   bool get hasForcePress => onForcePressStart != null || onForcePressPeak != null || onForcePressUpdate != null || onForcePressEnd != null;
   bool get hasPan => onPanDown != null || onPanStart != null || onPanUpdate != null || onPanCancel != null;
   bool get hasScale => onScaleStart != null || onScaleUpdate != null || onScaleEnd != null;
 
-  void enable(){
+  void enable() {
     if (!isEnabled) {
       animationController.value = 1.0;
       isSpringDown = false;
-      isEnabled=true;
+      isEnabled = true;
     }
   }
 
-  void disable(){
+  void disable() {
     if (isEnabled) {
       animationController.value = 1.0;
       isSpringDown = false;
-      isEnabled=false;
+      isEnabled = false;
     }
   }
 
