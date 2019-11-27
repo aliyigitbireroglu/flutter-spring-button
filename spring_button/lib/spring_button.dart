@@ -26,6 +26,9 @@ class SpringButton extends StatefulWidget {
   ///Use this value to determine the alignment of the animation.
   final Alignment alignment;
 
+  ///Use this value to determine the scaling factor while the animation is being played. Choose a value between 0.0 and 1.0.
+  final double scaleCoefficient;
+
   final GestureTapDownCallback onTapDown;
   final GestureTapUpCallback onTapUp;
   final GestureTapCallback onTap;
@@ -68,6 +71,7 @@ class SpringButton extends StatefulWidget {
     Key key,
     this.useCache: true,
     this.alignment: Alignment.center,
+    this.scaleCoefficient: 0.75,
     this.onTapDown,
     this.onTapUp,
     this.onTap,
@@ -103,13 +107,15 @@ class SpringButton extends StatefulWidget {
     this.onScaleStart,
     this.onScaleUpdate,
     this.onScaleEnd,
-  }) : super(key: key);
+  })  : assert(scaleCoefficient >= 0.0 && scaleCoefficient <= 1.0),
+        super(key: key);
 
   @override
   SpringButtonState createState() => SpringButtonState(
         springButtonType,
         useCache,
         alignment,
+        scaleCoefficient,
         onTapDown,
         onTapUp,
         onTap,
@@ -153,6 +159,7 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
   Widget uiChild;
   final bool useCache;
   final Alignment alignment;
+  final double scaleCoefficient;
 
   final GestureTapDownCallback onTapDown;
   final GestureTapUpCallback onTapUp;
@@ -205,6 +212,7 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
     this.springButtonType,
     this.useCache,
     this.alignment,
+    this.scaleCoefficient,
     this.onTapDown,
     this.onTapUp,
     this.onTap,
@@ -256,7 +264,7 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
     );
     animationController.value = 1;
     animation = Tween(
-      begin: 0.75,
+      begin: scaleCoefficient,
       end: 1.0,
     ).animate(
       CurvedAnimation(

@@ -45,7 +45,9 @@ SpringButton(
     SpringButtonType.OnlyScale, //springButtonType
     uiChild(),                  //uiChild
     {Key key,
-    useCache    : true,
+    useCache            : true,
+    alignment           : Alignment.center,
+    scaleCoefficient    : 0.75,
     onTapDown,
     onTapUp,
     onTap,
