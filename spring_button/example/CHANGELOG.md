@@ -1,3 +1,7 @@
+## [1.0.14-beta] - 03.05.2020
+
+* Minor changes.
+
 ## [1.0.13] - 27.11.2019
 
 * [scaleCoefficient] is added. Use this value to determine the scaling factor while the animation is being played. Choose a value between 0.0 and 1.0.
