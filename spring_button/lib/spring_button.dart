@@ -29,40 +29,75 @@ class SpringButton extends StatefulWidget {
   ///Use this value to determine the scaling factor while the animation is being played. Choose a value between 0.0 and 1.0.
   final double scaleCoefficient;
 
+  ///Delegate for gesture callback.
   final GestureTapDownCallback onTapDown;
+  ///Delegate for gesture callback.
   final GestureTapUpCallback onTapUp;
+  ///Delegate for gesture callback.
   final GestureTapCallback onTap;
+  ///Delegate for gesture callback.
   final GestureTapCancelCallback onTapCancel;
+  ///Delegate for gesture callback.
   final GestureTapDownCallback onSecondaryTapDown;
+  ///Delegate for gesture callback.
   final GestureTapUpCallback onSecondaryTapUp;
+  ///Delegate for gesture callback.
   final GestureTapCancelCallback onSecondaryTapCancel;
+  ///Delegate for gesture callback.
   final GestureTapCallback onDoubleTap;
+  ///Delegate for gesture callback.
   final GestureLongPressCallback onLongPress;
+  ///Delegate for gesture callback.
   final GestureLongPressStartCallback onLongPressStart;
+  ///Delegate for gesture callback.
   final GestureLongPressMoveUpdateCallback onLongPressMoveUpdate;
+  ///Delegate for gesture callback.
   final GestureLongPressUpCallback onLongPressUp;
+  ///Delegate for gesture callback.
   final GestureLongPressEndCallback onLongPressEnd;
+  ///Delegate for gesture callback.
   final GestureDragDownCallback onVerticalDragDown;
+  ///Delegate for gesture callback.
   final GestureDragStartCallback onVerticalDragStart;
+  ///Delegate for gesture callback.
   final GestureDragUpdateCallback onVerticalDragUpdate;
+  ///Delegate for gesture callback.
   final GestureDragEndCallback onVerticalDragEnd;
+  ///Delegate for gesture callback.
   final GestureDragCancelCallback onVerticalDragCancel;
+  ///Delegate for gesture callback.
   final GestureDragDownCallback onHorizontalDragDown;
+  ///Delegate for gesture callback.
   final GestureDragStartCallback onHorizontalDragStart;
+  ///Delegate for gesture callback.
   final GestureDragUpdateCallback onHorizontalDragUpdate;
+  ///Delegate for gesture callback.
   final GestureDragEndCallback onHorizontalDragEnd;
+  ///Delegate for gesture callback.
   final GestureDragCancelCallback onHorizontalDragCancel;
+  ///Delegate for gesture callback.
   final GestureDragDownCallback onPanDown;
+  ///Delegate for gesture callback.
   final GestureDragStartCallback onPanStart;
+  ///Delegate for gesture callback.
   final GestureDragUpdateCallback onPanUpdate;
+  ///Delegate for gesture callback.
   final GestureDragEndCallback onPanEnd;
+  ///Delegate for gesture callback.
   final GestureDragCancelCallback onPanCancel;
+  ///Delegate for gesture callback.
   final GestureScaleStartCallback onScaleStart;
+  ///Delegate for gesture callback.
   final GestureScaleUpdateCallback onScaleUpdate;
+  ///Delegate for gesture callback.
   final GestureScaleEndCallback onScaleEnd;
+  ///Delegate for gesture callback.
   final GestureForcePressStartCallback onForcePressStart;
+  ///Delegate for gesture callback.
   final GestureForcePressPeakCallback onForcePressPeak;
+  ///Delegate for gesture callback.
   final GestureForcePressUpdateCallback onForcePressUpdate;
+  ///Delegate for gesture callback.
   final GestureForcePressEndCallback onForcePressEnd;
 
   const SpringButton(
