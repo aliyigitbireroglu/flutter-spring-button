@@ -48,6 +48,7 @@ SpringButton(
     useCache            : true,
     alignment           : Alignment.center,
     scaleCoefficient    : 0.75,
+    duration            : 1000,
     onTapDown,
     onTapUp,
     onTap,

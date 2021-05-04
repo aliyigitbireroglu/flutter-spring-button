@@ -29,84 +29,122 @@ class SpringButton extends StatefulWidget {
   ///Use this value to determine the scaling factor while the animation is being played. Choose a value between 0.0 and 1.0.
   final double scaleCoefficient;
 
+  ///Use this value to determine the duration of the animation.
+  final int duration;
+
   ///Delegate for gesture callback.
-  final GestureTapDownCallback onTapDown;
+  final GestureTapDownCallback? onTapDown;
+
   ///Delegate for gesture callback.
-  final GestureTapUpCallback onTapUp;
+  final GestureTapUpCallback? onTapUp;
+
   ///Delegate for gesture callback.
-  final GestureTapCallback onTap;
+  final GestureTapCallback? onTap;
+
   ///Delegate for gesture callback.
-  final GestureTapCancelCallback onTapCancel;
+  final GestureTapCancelCallback? onTapCancel;
+
   ///Delegate for gesture callback.
-  final GestureTapDownCallback onSecondaryTapDown;
+  final GestureTapDownCallback? onSecondaryTapDown;
+
   ///Delegate for gesture callback.
-  final GestureTapUpCallback onSecondaryTapUp;
+  final GestureTapUpCallback? onSecondaryTapUp;
+
   ///Delegate for gesture callback.
-  final GestureTapCancelCallback onSecondaryTapCancel;
+  final GestureTapCancelCallback? onSecondaryTapCancel;
+
   ///Delegate for gesture callback.
-  final GestureTapCallback onDoubleTap;
+  final GestureTapCallback? onDoubleTap;
+
   ///Delegate for gesture callback.
-  final GestureLongPressCallback onLongPress;
+  final GestureLongPressCallback? onLongPress;
+
   ///Delegate for gesture callback.
-  final GestureLongPressStartCallback onLongPressStart;
+  final GestureLongPressStartCallback? onLongPressStart;
+
   ///Delegate for gesture callback.
-  final GestureLongPressMoveUpdateCallback onLongPressMoveUpdate;
+  final GestureLongPressMoveUpdateCallback? onLongPressMoveUpdate;
+
   ///Delegate for gesture callback.
-  final GestureLongPressUpCallback onLongPressUp;
+  final GestureLongPressUpCallback? onLongPressUp;
+
   ///Delegate for gesture callback.
-  final GestureLongPressEndCallback onLongPressEnd;
+  final GestureLongPressEndCallback? onLongPressEnd;
+
   ///Delegate for gesture callback.
-  final GestureDragDownCallback onVerticalDragDown;
+  final GestureDragDownCallback? onVerticalDragDown;
+
   ///Delegate for gesture callback.
-  final GestureDragStartCallback onVerticalDragStart;
+  final GestureDragStartCallback? onVerticalDragStart;
+
   ///Delegate for gesture callback.
-  final GestureDragUpdateCallback onVerticalDragUpdate;
+  final GestureDragUpdateCallback? onVerticalDragUpdate;
+
   ///Delegate for gesture callback.
-  final GestureDragEndCallback onVerticalDragEnd;
+  final GestureDragEndCallback? onVerticalDragEnd;
+
   ///Delegate for gesture callback.
-  final GestureDragCancelCallback onVerticalDragCancel;
+  final GestureDragCancelCallback? onVerticalDragCancel;
+
   ///Delegate for gesture callback.
-  final GestureDragDownCallback onHorizontalDragDown;
+  final GestureDragDownCallback? onHorizontalDragDown;
+
   ///Delegate for gesture callback.
-  final GestureDragStartCallback onHorizontalDragStart;
+  final GestureDragStartCallback? onHorizontalDragStart;
+
   ///Delegate for gesture callback.
-  final GestureDragUpdateCallback onHorizontalDragUpdate;
+  final GestureDragUpdateCallback? onHorizontalDragUpdate;
+
   ///Delegate for gesture callback.
-  final GestureDragEndCallback onHorizontalDragEnd;
+  final GestureDragEndCallback? onHorizontalDragEnd;
+
   ///Delegate for gesture callback.
-  final GestureDragCancelCallback onHorizontalDragCancel;
+  final GestureDragCancelCallback? onHorizontalDragCancel;
+
   ///Delegate for gesture callback.
-  final GestureDragDownCallback onPanDown;
+  final GestureDragDownCallback? onPanDown;
+
   ///Delegate for gesture callback.
-  final GestureDragStartCallback onPanStart;
+  final GestureDragStartCallback? onPanStart;
+
   ///Delegate for gesture callback.
-  final GestureDragUpdateCallback onPanUpdate;
+  final GestureDragUpdateCallback? onPanUpdate;
+
   ///Delegate for gesture callback.
-  final GestureDragEndCallback onPanEnd;
+  final GestureDragEndCallback? onPanEnd;
+
   ///Delegate for gesture callback.
-  final GestureDragCancelCallback onPanCancel;
+  final GestureDragCancelCallback? onPanCancel;
+
   ///Delegate for gesture callback.
-  final GestureScaleStartCallback onScaleStart;
+  final GestureScaleStartCallback? onScaleStart;
+
   ///Delegate for gesture callback.
-  final GestureScaleUpdateCallback onScaleUpdate;
+  final GestureScaleUpdateCallback? onScaleUpdate;
+
   ///Delegate for gesture callback.
-  final GestureScaleEndCallback onScaleEnd;
+  final GestureScaleEndCallback? onScaleEnd;
+
   ///Delegate for gesture callback.
-  final GestureForcePressStartCallback onForcePressStart;
+  final GestureForcePressStartCallback? onForcePressStart;
+
   ///Delegate for gesture callback.
-  final GestureForcePressPeakCallback onForcePressPeak;
+  final GestureForcePressPeakCallback? onForcePressPeak;
+
   ///Delegate for gesture callback.
-  final GestureForcePressUpdateCallback onForcePressUpdate;
+  final GestureForcePressUpdateCallback? onForcePressUpdate;
+
   ///Delegate for gesture callback.
-  final GestureForcePressEndCallback onForcePressEnd;
+  final GestureForcePressEndCallback? onForcePressEnd;
 
   const SpringButton(
     this.springButtonType,
     this.uiChild, {
-    Key key,
+    Key? key,
     this.useCache: true,
     this.alignment: Alignment.center,
     this.scaleCoefficient: 0.75,
+    this.duration: 1000,
     this.onTapDown,
     this.onTapUp,
     this.onTap,
@@ -156,14 +194,14 @@ class SpringButton extends StatefulWidget {
 
 class SpringButtonState extends State<SpringButton> with SingleTickerProviderStateMixin {
   final SpringButtonType springButtonType;
-  Widget uiChild;
+  Widget? uiChild;
   final bool useCache;
   final Alignment alignment;
   final double scaleCoefficient;
 
   ///The [AnimationController] used to create the spring effect.
-  AnimationController animationController;
-  Animation<double> animation;
+  late AnimationController animationController;
+  late Animation<double> animation;
 
   bool isSpringDown = false;
 
@@ -189,7 +227,7 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
       vsync: this,
       lowerBound: 0.0,
       upperBound: 1.0,
-      duration: const Duration(milliseconds: 1000),
+      duration: Duration(milliseconds: widget.duration),
     );
     animationController.value = 1;
     animation = Tween(
@@ -285,199 +323,199 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
           ? null
           : (_) {
               springDown();
-              if (widget.onTapDown != null && isEnabled) widget.onTapDown(_);
+              if (widget.onTapDown != null && isEnabled) widget.onTapDown!(_);
             },
       onTapUp: !hasTap
           ? null
           : (_) {
               spring();
-              if (widget.onTapUp != null && isEnabled) widget.onTapUp(_);
+              if (widget.onTapUp != null && isEnabled) widget.onTapUp!(_);
             },
       onTap: !hasTap
           ? null
           : () {
-              if (widget.onTap != null && isEnabled) widget.onTap();
+              if (widget.onTap != null && isEnabled) widget.onTap!();
             },
       onTapCancel: !hasTap
           ? null
           : () {
               springUp();
-              if (widget.onTapCancel != null && isEnabled) widget.onTapCancel();
+              if (widget.onTapCancel != null && isEnabled) widget.onTapCancel!();
             },
       onSecondaryTapDown: !hasSecondaryTap
           ? null
           : (_) {
               springDown();
-              if (widget.onSecondaryTapDown != null && isEnabled) widget.onSecondaryTapDown(_);
+              if (widget.onSecondaryTapDown != null && isEnabled) widget.onSecondaryTapDown!(_);
             },
       onSecondaryTapUp: !hasSecondaryTap
           ? null
           : (_) {
               spring();
-              if (widget.onSecondaryTapUp != null && isEnabled) widget.onSecondaryTapUp(_);
+              if (widget.onSecondaryTapUp != null && isEnabled) widget.onSecondaryTapUp!(_);
             },
       onSecondaryTapCancel: !hasSecondaryTap
           ? null
           : () {
               springUp();
-              if (widget.onSecondaryTapCancel != null && isEnabled) widget.onSecondaryTapCancel();
+              if (widget.onSecondaryTapCancel != null && isEnabled) widget.onSecondaryTapCancel!();
             },
       onDoubleTap: !hasDoubleTap
           ? null
           : () {
               springDown();
               spring();
-              if (widget.onDoubleTap != null && isEnabled) widget.onDoubleTap();
+              if (widget.onDoubleTap != null && isEnabled) widget.onDoubleTap!();
             },
       onLongPress: !hasLongPress
           ? null
           : () {
-              if (widget.onLongPress != null && isEnabled) widget.onLongPress();
+              if (widget.onLongPress != null && isEnabled) widget.onLongPress!();
             },
       onLongPressStart: !hasLongPress
           ? null
           : (_) {
               springDown();
-              if (widget.onLongPressStart != null && isEnabled) widget.onLongPressStart(_);
+              if (widget.onLongPressStart != null && isEnabled) widget.onLongPressStart!(_);
             },
       onLongPressMoveUpdate: !hasLongPress
           ? null
           : (_) {
-              if (widget.onLongPressMoveUpdate != null && isEnabled) widget.onLongPressMoveUpdate(_);
+              if (widget.onLongPressMoveUpdate != null && isEnabled) widget.onLongPressMoveUpdate!(_);
             },
       onLongPressUp: !hasLongPress
           ? null
           : () {
               spring();
-              if (widget.onLongPressUp != null && isEnabled) widget.onLongPressUp();
+              if (widget.onLongPressUp != null && isEnabled) widget.onLongPressUp!();
             },
       onLongPressEnd: !hasLongPress
           ? null
           : (_) {
-              if (widget.onLongPressEnd != null && isEnabled) widget.onLongPressEnd(_);
+              if (widget.onLongPressEnd != null && isEnabled) widget.onLongPressEnd!(_);
             },
       onVerticalDragDown: !hasVerticalDrag
           ? null
           : (_) {
-              if (widget.onVerticalDragDown != null && isEnabled) widget.onVerticalDragDown(_);
+              if (widget.onVerticalDragDown != null && isEnabled) widget.onVerticalDragDown!(_);
             },
       onVerticalDragStart: !hasVerticalDrag
           ? null
           : (_) {
               springDown();
-              if (widget.onVerticalDragStart != null && isEnabled) widget.onVerticalDragStart(_);
+              if (widget.onVerticalDragStart != null && isEnabled) widget.onVerticalDragStart!(_);
             },
       onVerticalDragUpdate: !hasVerticalDrag
           ? null
           : (_) {
-              if (widget.onVerticalDragUpdate != null && isEnabled) widget.onVerticalDragUpdate(_);
+              if (widget.onVerticalDragUpdate != null && isEnabled) widget.onVerticalDragUpdate!(_);
             },
       onVerticalDragEnd: !hasVerticalDrag
           ? null
           : (_) {
               spring();
-              if (widget.onVerticalDragEnd != null && isEnabled) widget.onVerticalDragEnd(_);
+              if (widget.onVerticalDragEnd != null && isEnabled) widget.onVerticalDragEnd!(_);
             },
       onVerticalDragCancel: !hasVerticalDrag
           ? null
           : () {
               springUp();
-              if (widget.onVerticalDragCancel != null && isEnabled) widget.onVerticalDragCancel();
+              if (widget.onVerticalDragCancel != null && isEnabled) widget.onVerticalDragCancel!();
             },
       onHorizontalDragDown: !hasHorizontalDrag
           ? null
           : (_) {
-              if (widget.onHorizontalDragDown != null && isEnabled) widget.onHorizontalDragDown(_);
+              if (widget.onHorizontalDragDown != null && isEnabled) widget.onHorizontalDragDown!(_);
             },
       onHorizontalDragStart: !hasHorizontalDrag
           ? null
           : (_) {
               springDown();
-              if (widget.onHorizontalDragStart != null && isEnabled) widget.onHorizontalDragStart(_);
+              if (widget.onHorizontalDragStart != null && isEnabled) widget.onHorizontalDragStart!(_);
             },
       onHorizontalDragUpdate: !hasHorizontalDrag
           ? null
           : (_) {
-              if (widget.onHorizontalDragUpdate != null && isEnabled) widget.onHorizontalDragUpdate(_);
+              if (widget.onHorizontalDragUpdate != null && isEnabled) widget.onHorizontalDragUpdate!(_);
             },
       onHorizontalDragEnd: !hasHorizontalDrag
           ? null
           : (_) {
               spring();
-              if (widget.onHorizontalDragEnd != null && isEnabled) widget.onHorizontalDragEnd(_);
+              if (widget.onHorizontalDragEnd != null && isEnabled) widget.onHorizontalDragEnd!(_);
             },
       onHorizontalDragCancel: !hasHorizontalDrag
           ? null
           : () {
               springUp();
-              if (widget.onHorizontalDragCancel != null && isEnabled) widget.onHorizontalDragCancel();
+              if (widget.onHorizontalDragCancel != null && isEnabled) widget.onHorizontalDragCancel!();
             },
       onForcePressStart: !hasForcePress
           ? null
           : (_) {
               springDown();
-              if (widget.onForcePressStart != null && isEnabled) widget.onForcePressStart(_);
+              if (widget.onForcePressStart != null && isEnabled) widget.onForcePressStart!(_);
             },
       onForcePressPeak: !hasForcePress
           ? null
           : (_) {
-              if (widget.onForcePressPeak != null && isEnabled) widget.onForcePressPeak(_);
+              if (widget.onForcePressPeak != null && isEnabled) widget.onForcePressPeak!(_);
             },
       onForcePressUpdate: !hasForcePress
           ? null
           : (_) {
-              if (widget.onForcePressUpdate != null && isEnabled) widget.onForcePressUpdate(_);
+              if (widget.onForcePressUpdate != null && isEnabled) widget.onForcePressUpdate!(_);
             },
       onForcePressEnd: !hasForcePress
           ? null
           : (_) {
               spring();
-              if (widget.onForcePressEnd != null && isEnabled) widget.onForcePressEnd(_);
+              if (widget.onForcePressEnd != null && isEnabled) widget.onForcePressEnd!(_);
             },
       onPanDown: !hasPan
           ? null
           : (_) {
-              if (widget.onPanDown != null && isEnabled) widget.onPanDown(_);
+              if (widget.onPanDown != null && isEnabled) widget.onPanDown!(_);
             },
       onPanStart: !hasPan
           ? null
           : (_) {
               springDown();
-              if (widget.onPanStart != null && isEnabled) widget.onPanStart(_);
+              if (widget.onPanStart != null && isEnabled) widget.onPanStart!(_);
             },
       onPanUpdate: !hasPan
           ? null
           : (_) {
-              if (widget.onPanUpdate != null && isEnabled) widget.onPanUpdate(_);
+              if (widget.onPanUpdate != null && isEnabled) widget.onPanUpdate!(_);
             },
       onPanEnd: !hasPan
           ? null
           : (_) {
               spring();
-              if (widget.onPanEnd != null && isEnabled) widget.onPanEnd(_);
+              if (widget.onPanEnd != null && isEnabled) widget.onPanEnd!(_);
             },
       onPanCancel: !hasPan
           ? null
           : () {
               springUp();
-              if (widget.onPanCancel != null && isEnabled) widget.onPanCancel();
+              if (widget.onPanCancel != null && isEnabled) widget.onPanCancel!();
             },
       onScaleStart: !hasScale
           ? null
           : (_) {
               springDown();
-              if (widget.onScaleStart != null && isEnabled) widget.onScaleStart(_);
+              if (widget.onScaleStart != null && isEnabled) widget.onScaleStart!(_);
             },
       onScaleUpdate: !hasScale
           ? null
           : (_) {
-              if (widget.onScaleUpdate != null && isEnabled) widget.onScaleUpdate(_);
+              if (widget.onScaleUpdate != null && isEnabled) widget.onScaleUpdate!(_);
             },
       onScaleEnd: !hasScale
           ? null
           : (_) {
               spring();
-              if (widget.onScaleEnd != null && isEnabled) widget.onScaleEnd(_);
+              if (widget.onScaleEnd != null && isEnabled) widget.onScaleEnd!(_);
             },
       child: widget.uiChild,
     );
@@ -489,7 +527,7 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
       return AnimatedBuilder(
         animation: animation,
         child: useCache ? uiChild : null,
-        builder: (BuildContext context, Widget cachedChild) {
+        builder: (BuildContext context, Widget? cachedChild) {
           return Opacity(
             opacity: animation.value.clamp(0.5, 1.0),
             child: Transform.scale(
@@ -503,7 +541,7 @@ class SpringButtonState extends State<SpringButton> with SingleTickerProviderSta
     return AnimatedBuilder(
       animation: animation,
       child: useCache ? uiChild : null,
-      builder: (BuildContext context, Widget cachedChild) {
+      builder: (BuildContext context, Widget? cachedChild) {
         return Transform.scale(
           scale: animation.value,
           child: useCache ? cachedChild : wrapper(),

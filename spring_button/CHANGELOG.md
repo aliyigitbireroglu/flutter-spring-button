@@ -1,3 +1,9 @@
+## [2.0.0] - 04.05.2021
+
+* Migrated to Null Safety.
+
+* Minor changes.
+
 ## [1.0.14] - 11.10.2020
 
 * Regular maintenance.

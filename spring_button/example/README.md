@@ -53,6 +53,7 @@ SpringButton(
     useCache            : true,
     alignment           : Alignment.center,
     scaleCoefficient    : 0.75,
+    duration            : 1000,
     onTapDown,
     onTapUp,
     onTap,
@@ -112,3 +113,4 @@ Cheers.
 <br><br>
 <img align="right" src="https://www.cosmossoftware.coffee/Common/Images/CosmosSoftwareIconTransparent.png" width="150" height="150"/>
 <br><br>
+
